@@ -1,0 +1,53 @@
+#mainimg {
+  width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 72px;
+}
+
+body {
+  background-color: #111;
+  color: #eee;
+  font-family: 'Roboto', sans-serif;
+}
+
+body div {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  background-color: #666;
+  border-radius: 7px;
+}
+
+.btn:hover {
+  background-color: #555;
+}
+
+.btn:active {
+  background-color: #333;
+}
+
+pre {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #1a1a1a;
+  white-space: inherit;
+  word-break: break-word;
+  max-width: 850px;
+}
