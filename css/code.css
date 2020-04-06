@@ -6,6 +6,22 @@
   margin-bottom: 72px;
 }
 
+.center-text {
+  text-align: center;
+}
+
+p.links {
+  font-size: 15pt;
+  text-align: center;
+}
+
+p.links a {
+  margin-left: 10px;
+  margin-right: 10px;
+  color: #777;
+  text-decoration: none;
+}
+
 body {
   background-color: #111;
   color: #eee;
