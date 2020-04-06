@@ -5,8 +5,12 @@ var code = url.searchParams.get("code");
 var obj = document.getElementById("code");
 var objcopy = document.getElementById("codecopy");
 
-obj.innerText = "/spoti " + code;
-objcopy.value = "/spoti " + code;
+if (code === null) {
+  window.location.href = "..";
+} else {
+  obj.innerText = "/spoti " + code;
+  objcopy.value = "/spoti " + code;
+}
 
 function copyToClipboard() {
   objcopy.select();
