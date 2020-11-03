@@ -112,21 +112,16 @@ td#cover-td {
 }
 
 #bg-image {
-  position: absolute;
-  top: 0;
-  z-index: -100;
-
-  filter: blur(5vh) contrast(0.5) brightness(var(--filter-brightness));
-
-  height: 100vh;
-  width: 100vw;
-
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
-  transform: scale(1.25);
-
+  filter: blur(5vh) contrast(0.5) brightness(var(--filter-brightness));
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
   margin-left: -5vh;
   margin-top: -5vh;
+  transform: scale(1.25);
+  z-index: -100;
 }

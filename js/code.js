@@ -19,6 +19,6 @@ function copyToClipboard() {
   document.execCommand("copy");
   var copied = document.getElementById("copied");
   copied.innerText = "Copied to clipboard!";
-  setTimeout(function(){ copied.innerText = "" }, 2000);
+  setTimeout(function(){ copied.innerText = ""; }, 2000);
   document.getSelection().removeAllRanges();
 }
