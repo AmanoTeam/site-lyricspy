@@ -2,6 +2,10 @@ function secondsToPrettyTime(seconds) {
   return new Date(seconds * 1000).toISOString().substr(11, 8).replace(/^00:/, "");
 }
 
+function getLinesCount(div, cs) {
+  return Math.floor(div.offsetHeight / Math.floor(parseFloat(cs.marginBottom, 10) + parseFloat(cs.fontSize, 10)));
+}
+
 let loc = window.location.href;
 let params = new URL(loc).searchParams;
 
@@ -53,3 +57,17 @@ if (currentTheme === "light") {
 else {
   document.body.className = "dark-mode";
 }
+
+let computedStyle = document.defaultView.getComputedStyle(trackDiv);
+let computedStyle2 = document.defaultView.getComputedStyle(artistDiv);
+
+
+window.onload = function() {
+  while (getLinesCount(trackDiv, computedStyle) >= 2) {
+    let trackNewVal = parseFloat(computedStyle.fontSize) * 0.98;
+    trackDiv.style.fontSize = trackNewVal + "px";
+
+    let artistNewVal = parseFloat(computedStyle2.fontSize) * 0.995;
+    artistDiv.style.fontSize = artistNewVal + "px";
+  }
+};

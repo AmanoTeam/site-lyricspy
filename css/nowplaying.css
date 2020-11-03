@@ -43,18 +43,16 @@ div#progress-total {
 }
 
 span#trackname {
-  font-size: 6vw;
+  display: block;
+  font-size: 10vw;
   margin-right: 4vw;
   margin-bottom: 1vw;
-  display: table;
-  white-space: normal;
 }
 
 span#artistname {
+  display: block;
   font-size: 3.5vw;
   margin-right: 4vw;
-  display: table;
-  white-space: normal;
 }
 
 #details-top {
