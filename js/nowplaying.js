@@ -9,14 +9,17 @@ let cover = params.get("cover");
 let track = params.get("track");
 let artist = params.get("artist");
 let currentTheme = params.get("theme");
+let blurredBg = parseInt(params.get("blurbg"), 10);
 let timeNow = parseInt(params.get("timenow"), 10);
 let timeTotal = parseInt(params.get("timetotal"), 10);
 
 let coverDiv = document.getElementById("coverart");
 coverDiv.src = cover;
 
-let coverDivBg = document.getElementById("bg-image");
-coverDivBg.style.backgroundImage = "url('" + cover + "')";
+if (blurredBg) {
+  let coverDivBg = document.getElementById("bg-image");
+  coverDivBg.style.backgroundImage = "url('" + cover + "')";
+}
 
 let trackDiv = document.getElementById("trackname");
 trackDiv.innerText = track;
