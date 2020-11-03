@@ -67,7 +67,7 @@ span#artistname {
 
 div#inner-progress {
   background-color: var(--color-primary);
-  width: 0vw;
+  width: 0;
   height: calc(5vh + 1px);
 }
 

@@ -9,14 +9,14 @@ let cover = params.get("cover");
 let track = params.get("track");
 let artist = params.get("artist");
 let currentTheme = params.get("theme");
-let timeNow = parseInt(params.get("timenow"));
-let timeTotal = parseInt(params.get("timetotal"));
+let timeNow = parseInt(params.get("timenow"), 10);
+let timeTotal = parseInt(params.get("timetotal"), 10);
 
 let coverDiv = document.getElementById("coverart");
 coverDiv.src = cover;
 
 let coverDivBg = document.getElementById("bg-image");
-coverDivBg.style.backgroundImage = "url('" + cover + "')"
+coverDivBg.style.backgroundImage = "url('" + cover + "')";
 
 let trackDiv = document.getElementById("trackname");
 trackDiv.innerText = track;
@@ -48,5 +48,5 @@ if (currentTheme === "light") {
   document.body.className = "light-mode";
 }
 else {
-  document.body.className = "dark-mode"
+  document.body.className = "dark-mode";
 }
