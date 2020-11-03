@@ -36,7 +36,7 @@ div#progress-total {
   background-color: var(--color-secondary);
   border-color: var(--color-primary);
   border-style: solid;
-  border-width: 0.5vw;
+  border-width: 6px;
   width: 54vw;
   height: 5vh;
   border-radius: 1vw;
