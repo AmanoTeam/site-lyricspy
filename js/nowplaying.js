@@ -64,10 +64,10 @@ let computedStyle2 = document.defaultView.getComputedStyle(artistDiv);
 
 window.onload = function() {
   while (getLinesCount(trackDiv, computedStyle) >= 2) {
-    let trackNewVal = parseFloat(computedStyle.fontSize) * 0.98;
+    let trackNewVal = parseFloat(computedStyle.fontSize) * 0.99;
     trackDiv.style.fontSize = trackNewVal + "px";
 
-    let artistNewVal = parseFloat(computedStyle2.fontSize) * 0.995;
+    let artistNewVal = parseFloat(computedStyle2.fontSize) * 0.9975;
     artistDiv.style.fontSize = artistNewVal + "px";
   }
 };
