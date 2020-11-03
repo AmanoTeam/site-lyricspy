@@ -45,24 +45,26 @@ div#progress-total {
 span#trackname {
   font-size: 6vw;
   margin-right: 4vw;
+  margin-bottom: 1vw;
   display: table;
   white-space: normal;
 }
 
 span#artistname {
-  display: block;
-  font-size: 4vw;
-  margin-bottom: 2vw;
+  font-size: 3.5vw;
+  margin-right: 4vw;
+  display: table;
+  white-space: normal;
 }
 
 #details-top {
   position: fixed;
-  top: calc((100vh - 33vw) / 2);
+  top: calc((100vh - 30vw) / 2);
 }
 
 #details-bottom {
   position: fixed;
-  bottom: calc((100vh - 33vw) / 2);
+  bottom: calc((100vh - 30vw) / 2);
 }
 
 div#inner-progress {
