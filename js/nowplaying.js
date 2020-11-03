@@ -8,6 +8,7 @@ let params = new URL(loc).searchParams;
 let cover = params.get("cover");
 let track = params.get("track");
 let artist = params.get("artist");
+let current_theme = params.get("theme");
 let time_now = parseInt(params.get("timenow"));
 let time_total = parseInt(params.get("timetotal"));
 
@@ -41,4 +42,11 @@ if (time_now && time_total) {
 
     progress_bar.style.width = percent * 0.54 + "vw";
   }
+}
+
+if (current_theme === "light") {
+  document.body.className = "light-mode";
+}
+else {
+  document.body.className = "dark-mode"
 }
