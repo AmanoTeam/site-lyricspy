@@ -51,7 +51,7 @@ span#trackname {
 
 span#artistname {
   display: block;
-  font-size: 3.5vw;
+  font-size: 4vw;
   margin-right: 4vw;
 }
 
@@ -103,7 +103,7 @@ td#details-td {
 
 #timing-tr {
   width: 55vw;
-  font-size: 2.5vw;
+  font-size: 3vw;
 }
 
 td#cover-td {
