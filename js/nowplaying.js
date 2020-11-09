@@ -42,7 +42,7 @@ if (timeTotal) {
 
   // In case time-now is bigger than time-total to avoid overflows.
   if (timeNow > timeTotal) {
-    progressBar.style.width = "54vw";
+    progressBar.style.width = "inherit";
   }
   else {
     let percent = (timeNow * 100) / timeTotal;
