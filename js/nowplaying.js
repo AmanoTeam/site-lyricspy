@@ -41,13 +41,13 @@ if (timeTotal) {
   let progressBar = document.getElementById("inner-progress");
 
   // In case time-now is bigger than time-total to avoid overflows.
-  if (timeNow > timeTotal) {
+  if (timeNow >= timeTotal) {
     progressBar.style.width = "inherit";
   }
   else {
     let percent = (timeNow * 100) / timeTotal;
 
-    progressBar.style.width = percent * 0.54 + "vw";
+    progressBar.style.width = "calc(" + percent * 0.54 + "vw - 12px)";
   }
 }
 else {
