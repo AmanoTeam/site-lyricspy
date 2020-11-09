@@ -57,19 +57,19 @@ span#artistname {
 }
 
 #details-top {
-  position: fixed;
+  position: absolute;
   top: calc((100vh - 30vw) / 2);
 }
 
 #details-bottom {
-  position: fixed;
+  position: absolute;
   bottom: calc((100vh - 30vw) / 2);
 }
 
 div#inner-progress {
   background-color: var(--color-primary);
   width: 0;
-  height: 2.5vw;
+  height: inherit;
 }
 
 table {
