@@ -43,7 +43,7 @@ div#progress-total {
 }
 
 span#trackname {
-  word-break: break-all;
+  word-break: break-word;
   display: block;
   font-size: 10vw;
   margin-right: 4vw;
