@@ -13,9 +13,9 @@ let cover = params.get("cover");
 let track = params.get("track");
 let artist = params.get("artist");
 let currentTheme = params.get("theme");
-let blurredBg = parseInt(params.get("blurbg"), 10);
-let timeNow = parseInt(params.get("timenow"), 10);
-let timeTotal = parseInt(params.get("timetotal"), 10);
+let blurredBg = parseInt(params.get("blurbg"), 10) || 0;
+let timeNow = parseInt(params.get("timenow"), 10) || 0;
+let timeTotal = parseInt(params.get("timetotal"), 10) || 0;
 
 let coverDiv = document.getElementById("coverart");
 coverDiv.src = cover;
@@ -37,7 +37,7 @@ timeNowTd.innerText = secondsToPrettyTime(timeNow);
 let timeTotalTd = document.getElementById("time-total");
 timeTotalTd.innerText = secondsToPrettyTime(timeTotal);
 
-if (timeNow && timeTotal) {
+if (timeTotal) {
   let progressBar = document.getElementById("inner-progress");
 
   // In case time-now is bigger than time-total to avoid overflows.
@@ -49,6 +49,11 @@ if (timeNow && timeTotal) {
 
     progressBar.style.width = percent * 0.54 + "vw";
   }
+}
+else {
+  let details = document.getElementById("details-bottom");
+
+  details.style.visibility = "hidden";
 }
 
 if (currentTheme === "light") {
