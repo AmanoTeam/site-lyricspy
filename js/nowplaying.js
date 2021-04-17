@@ -2,10 +2,6 @@ function secondsToPrettyTime(seconds) {
   return new Date(seconds * 1000).toISOString().substr(11, 8).replace(/^00:/, "");
 }
 
-function getLinesCount(div, cs) {
-  return Math.floor(div.offsetHeight / Math.floor(parseFloat(cs.marginBottom, 10) + parseFloat(cs.fontSize, 10)));
-}
-
 let loc = window.location.href;
 let params = new URL(loc).searchParams;
 
@@ -68,11 +64,11 @@ let computedStyle2 = document.defaultView.getComputedStyle(artistDiv);
 
 
 window.onload = function() {
-  while (getLinesCount(trackDiv, computedStyle) >= 2) {
-    let trackNewVal = parseFloat(computedStyle.fontSize) * 0.99;
+  while (parseInt(computedStyle.height, 10) > (screen.width * 0.33) * 0.4) {  // 40% of cover art size (33% of screen width)
+    let trackNewVal = parseFloat(computedStyle.fontSize) * 0.995;
     trackDiv.style.fontSize = trackNewVal + "px";
 
-    let artistNewVal = parseFloat(computedStyle2.fontSize) * 0.9975;
+    let artistNewVal = parseFloat(computedStyle2.fontSize) * 0.99885;
     artistDiv.style.fontSize = artistNewVal + "px";
   }
 };
