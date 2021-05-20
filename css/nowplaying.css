@@ -121,9 +121,7 @@ td#cover-td {
   height: 100vh;
   width: 100vw;
   top: 0;
-  margin-left: -5vh;
-  margin-top: -5vh;
-  transform: scale(1.25);
+  transform: scale(1.3);
   z-index: -100;
 }
 
@@ -136,5 +134,5 @@ td#cover-td {
   left: 0;
   right: 0;
   filter: grayscale(0.5) brightness(var(--filter-brightness));
-  background: var(--bg-filter);
+  background-color: var(--bg-filter);
 }
