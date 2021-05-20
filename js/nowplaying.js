@@ -82,7 +82,7 @@ window.onload = function() {
       }
 
       document.documentElement.style
-        .setProperty('--bg-filter', "rgb(" + color[0] + "," + color[1] + "," + color[2] + ", 0.5)");
+        .setProperty('--bg-filter', "rgb(" + color[0] + "," + color[1] + "," + color[2] + ", 0.6)");
     });
   }
 };
