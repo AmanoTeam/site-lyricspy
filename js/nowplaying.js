@@ -71,4 +71,18 @@ window.onload = function() {
     let artistNewVal = parseFloat(computedStyle2.fontSize) * 0.99885;
     artistDiv.style.fontSize = artistNewVal + "px";
   }
+
+  if (blurredBg) {
+    Vibrant.from(cover).getPalette().then(function(palette) {
+      if (currentTheme === "light") {
+        var color = palette.LightVibrant.getRgb();
+      }
+      else {
+        var color = palette.DarkVibrant.getRgb();
+      }
+
+      document.documentElement.style
+        .setProperty('--bg-filter', "rgb(" + color[0] + "," + color[1] + "," + color[2] + ", 0.5)");
+    });
+  }
 };

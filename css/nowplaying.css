@@ -6,14 +6,14 @@
 .light-mode {
   --color-primary: black;
   --color-secondary: white;
-  --filter-brightness: 1.5;
+  --filter-brightness: 1.1;
   --box-shadow: #bbb6;
 }
 
 .dark-mode {
   --color-primary: white;
   --color-secondary: black;
-  --filter-brightness: 0.4;
+  --filter-brightness: 0.3;
   --box-shadow: #4446;
 }
 
@@ -116,7 +116,7 @@ td#cover-td {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  filter: blur(5vh) contrast(0.5) brightness(var(--filter-brightness));
+  filter: blur(5vh);
   position: absolute;
   height: 100vh;
   width: 100vw;
@@ -125,4 +125,16 @@ td#cover-td {
   margin-top: -5vh;
   transform: scale(1.25);
   z-index: -100;
+}
+
+#bg-image:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  filter: grayscale(0.5) brightness(var(--filter-brightness));
+  background: var(--bg-filter);
 }
