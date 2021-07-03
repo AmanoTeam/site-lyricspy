@@ -50,6 +50,12 @@ else {
   let details = document.getElementById("details-bottom");
 
   details.style.visibility = "hidden";
+
+  let detailsTop = document.getElementById("details-top");
+
+  // Reset details-top style to default, making it centered.
+  detailsTop.style.position = "initial";
+  detailsTop.style.top = "initial";
 }
 
 if (currentTheme === "light") {
