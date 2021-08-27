@@ -33,6 +33,8 @@ timeNowTd.innerText = secondsToPrettyTime(timeNow);
 let timeTotalTd = document.getElementById("time-total");
 timeTotalTd.innerText = secondsToPrettyTime(timeTotal);
 
+let detailsTop = document.getElementById("details-top");
+
 if (timeTotal) {
   let progressBar = document.getElementById("inner-progress");
 
@@ -51,8 +53,6 @@ else {
 
   details.style.visibility = "hidden";
 
-  let detailsTop = document.getElementById("details-top");
-
   // Reset details-top style to default, making it centered.
   detailsTop.style.position = "initial";
   detailsTop.style.top = "initial";
@@ -65,16 +65,17 @@ else {
   document.body.className = "dark-mode";
 }
 
-let computedStyle = document.defaultView.getComputedStyle(trackDiv);
-let computedStyle2 = document.defaultView.getComputedStyle(artistDiv);
+let topStyle = document.defaultView.getComputedStyle(detailsTop);
+let trackStyle = document.defaultView.getComputedStyle(trackDiv);
+let artistStyle = document.defaultView.getComputedStyle(artistDiv);
 
 
 window.onload = function() {
-  while (parseInt(computedStyle.height, 10) > (screen.width * 0.33) * 0.4) {  // 40% of cover art size (33% of screen width)
-    let trackNewVal = parseFloat(computedStyle.fontSize) * 0.995;
+  while (parseInt(topStyle.height, 10) > (screen.width * 0.33) * 0.65) {  // 65% of cover art size (33% of screen width)
+    let trackNewVal = parseFloat(trackStyle.fontSize) * 0.995;
     trackDiv.style.fontSize = trackNewVal + "px";
 
-    let artistNewVal = parseFloat(computedStyle2.fontSize) * 0.99885;
+    let artistNewVal = parseFloat(artistStyle.fontSize) * 0.99885;
     artistDiv.style.fontSize = artistNewVal + "px";
   }
 
