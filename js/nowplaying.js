@@ -35,7 +35,7 @@ timeTotalTd.innerText = secondsToPrettyTime(timeTotal);
 
 let detailsTop = document.getElementById("details-top");
 
-var maxPercent;
+let maxPercent;
 
 if (timeTotal) {
   let progressBar = document.getElementById("inner-progress");
@@ -87,15 +87,17 @@ window.onload = function() {
 
   if (blurredBg) {
     Vibrant.from(cover).getPalette().then(function(palette) {
+      let color;
+
       if (currentTheme === "light") {
-        var color = palette.LightVibrant.getRgb();
+        color = palette.LightVibrant.getRgb();
       }
       else {
-        var color = palette.DarkVibrant.getRgb();
+        color = palette.DarkVibrant.getRgb();
       }
 
       document.documentElement.style
-        .setProperty('--bg-filter', "rgb(" + color[0] + "," + color[1] + "," + color[2] + ", 0.6)");
+        .setProperty("--bg-filter", "rgb(" + color[0] + "," + color[1] + "," + color[2] + ", 0.6)");
     });
   }
 };
