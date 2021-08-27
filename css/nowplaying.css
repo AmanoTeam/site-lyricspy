@@ -125,7 +125,7 @@ td#cover-td {
   z-index: -100;
 }
 
-#bg-image:before {
+#bg-image::before {
   content: "";
   display: block;
   position: absolute;
