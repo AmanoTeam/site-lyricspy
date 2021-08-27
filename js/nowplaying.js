@@ -38,6 +38,8 @@ let detailsTop = document.getElementById("details-top");
 if (timeTotal) {
   let progressBar = document.getElementById("inner-progress");
 
+  var maxPercent = 0.65;
+
   // In case time-now is bigger than time-total to avoid overflows.
   if (timeNow >= timeTotal) {
     progressBar.style.width = "inherit";
@@ -50,6 +52,8 @@ if (timeTotal) {
 }
 else {
   let details = document.getElementById("details-bottom");
+
+  var maxPercent = 0.85;
 
   details.style.visibility = "hidden";
 
@@ -71,7 +75,7 @@ let artistStyle = document.defaultView.getComputedStyle(artistDiv);
 
 
 window.onload = function() {
-  while (parseInt(topStyle.height, 10) > (screen.width * 0.33) * 0.65) {  // 65% of cover art size (33% of screen width)
+  while (parseInt(topStyle.height, 10) > (screen.width * 0.33) * maxPercent) {  // 65% or 85% of cover art size (33% of screen width)
     let trackNewVal = parseFloat(trackStyle.fontSize) * 0.995;
     trackDiv.style.fontSize = trackNewVal + "px";
 
