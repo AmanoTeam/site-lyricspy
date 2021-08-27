@@ -71,18 +71,21 @@ else {
   document.body.className = "dark-mode";
 }
 
-let topStyle = document.defaultView.getComputedStyle(detailsTop);
-let trackStyle = document.defaultView.getComputedStyle(trackDiv);
-let artistStyle = document.defaultView.getComputedStyle(artistDiv);
 
+let topStyle = document.defaultView.getComputedStyle(detailsTop);
 
 window.onload = function() {
-  while (parseInt(topStyle.height, 10) > (screen.width * 0.33) * maxPercent) {  // 65% or 85% of cover art size (33% of screen width)
-    let trackNewVal = parseFloat(trackStyle.fontSize) * 0.995;
-    trackDiv.style.fontSize = trackNewVal + "px";
+  let trackNameFont = 10;  // 10vw
+  let artistNameFont = 4;  // 4vw
 
-    let artistNewVal = parseFloat(artistStyle.fontSize) * 0.99885;
-    artistDiv.style.fontSize = artistNewVal + "px";
+  // Reducing font size until stuff gets in place.
+  // artist font size is always reduced less than track name font size.
+  while (parseInt(topStyle.height, 10) > (window.outerWidth * 0.33) * maxPercent) {  // 65% or 85% of cover art size (33% of screen width)
+    trackNameFont *= 0.995;
+    artistNameFont *= 0.9985;
+
+    trackDiv.style.fontSize = trackNameFont + "vw";
+    artistDiv.style.fontSize = artistNameFont + "vw";
   }
 
   if (blurredBg) {
