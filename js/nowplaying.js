@@ -35,10 +35,12 @@ timeTotalTd.innerText = secondsToPrettyTime(timeTotal);
 
 let detailsTop = document.getElementById("details-top");
 
+var maxPercent;
+
 if (timeTotal) {
   let progressBar = document.getElementById("inner-progress");
 
-  var maxPercent = 0.65;
+  maxPercent = 0.65;
 
   // In case time-now is bigger than time-total to avoid overflows.
   if (timeNow >= timeTotal) {
@@ -53,7 +55,7 @@ if (timeTotal) {
 else {
   let details = document.getElementById("details-bottom");
 
-  var maxPercent = 0.85;
+  maxPercent = 0.85;
 
   details.style.visibility = "hidden";
 
