@@ -99,6 +99,6 @@ if (blurredBg) {
     }
 
     document.documentElement.style
-      .setProperty("--bg-filter", "rgb(" + color.join(",") + ",0.6)");
+      .setProperty("--bg-filter", "rgb(" + color.join(",") + ",0.5)");
   });
 }
