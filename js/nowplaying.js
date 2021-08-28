@@ -40,7 +40,7 @@ let maxPercent;
 if (timeTotal) {
   let progressBar = document.getElementById("inner-progress");
 
-  maxPercent = 0.65;
+  maxPercent = 0.6;
 
   // In case time-now is bigger than time-total to avoid overflows.
   if (timeNow >= timeTotal) {
@@ -79,7 +79,7 @@ let artistNameFont = 4;  // 4vw
 
 // Reducing font size until stuff gets in place.
 // artist font size is always reduced less than track name font size.
-while (parseInt(topStyle.height, 10) > (window.outerWidth * 0.33) * maxPercent) {  // 65% or 85% of cover art size (33% of screen width)
+while (parseInt(topStyle.height, 10) > (window.outerWidth * 0.33) * maxPercent) {  // 60% or 85% of cover art size (33% of screen width)
   trackNameFont *= 0.995;
   artistNameFont *= 0.9985;
 
