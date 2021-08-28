@@ -74,33 +74,31 @@ else {
 
 let topStyle = document.defaultView.getComputedStyle(detailsTop);
 
-window.onload = function() {
-  let trackNameFont = 10;  // 10vw
-  let artistNameFont = 4;  // 4vw
+let trackNameFont = 10;  // 10vw
+let artistNameFont = 4;  // 4vw
 
-  // Reducing font size until stuff gets in place.
-  // artist font size is always reduced less than track name font size.
-  while (parseInt(topStyle.height, 10) > (window.outerWidth * 0.33) * maxPercent) {  // 65% or 85% of cover art size (33% of screen width)
-    trackNameFont *= 0.995;
-    artistNameFont *= 0.9985;
+// Reducing font size until stuff gets in place.
+// artist font size is always reduced less than track name font size.
+while (parseInt(topStyle.height, 10) > (window.outerWidth * 0.33) * maxPercent) {  // 65% or 85% of cover art size (33% of screen width)
+  trackNameFont *= 0.995;
+  artistNameFont *= 0.9985;
 
-    trackDiv.style.fontSize = trackNameFont + "vw";
-    artistDiv.style.fontSize = artistNameFont + "vw";
-  }
+  trackDiv.style.fontSize = trackNameFont + "vw";
+  artistDiv.style.fontSize = artistNameFont + "vw";
+}
 
-  if (blurredBg) {
-    Vibrant.from(cover).getPalette().then(function(palette) {
-      let color;
+if (blurredBg) {
+  Vibrant.from(cover).getPalette().then(function(palette) {
+    let color;
 
-      if (currentTheme === "light") {
-        color = palette.LightVibrant.getRgb();
-      }
-      else {
-        color = palette.DarkVibrant.getRgb();
-      }
+    if (currentTheme === "light") {
+      color = palette.LightVibrant.getRgb();
+    }
+    else {
+      color = palette.DarkVibrant.getRgb();
+    }
 
-      document.documentElement.style
-        .setProperty("--bg-filter", "rgb(" + color.join(",") + ",0.6)");
-    });
-  }
-};
+    document.documentElement.style
+      .setProperty("--bg-filter", "rgb(" + color.join(",") + ",0.6)");
+  });
+}
