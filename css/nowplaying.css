@@ -46,14 +46,14 @@ div#progress-total {
 span#trackname {
   word-break: break-word;
   display: block;
-  font-size: 10vw;
+  font-size: 15vw;
   margin-right: 4vw;
   margin-bottom: 1vw;
 }
 
 span#artistname {
   display: block;
-  font-size: 4vw;
+  font-size: 6vw;
   margin-right: 4vw;
 }
 

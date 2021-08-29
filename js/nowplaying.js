@@ -76,8 +76,8 @@ else {
 
 let topStyle = document.defaultView.getComputedStyle(detailsTop);
 
-let trackNameFont = 10;  // 10vw
-let artistNameFont = 4;  // 4vw
+let trackNameFont = 15;  // 15vw
+let artistNameFont = 6;  // 6vw
 
 // Reducing font size until stuff gets in place.
 // artist font size is always reduced less than track name font size.
