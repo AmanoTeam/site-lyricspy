@@ -138,6 +138,7 @@ td#cover-td {
   background-color: var(--bg-filter);
 }
 
-.hide-progressbar table, .hide-progressbar div#progress-total {
+.hide-progressbar table,
+.hide-progressbar div#progress-total {
   display: none;
 }
