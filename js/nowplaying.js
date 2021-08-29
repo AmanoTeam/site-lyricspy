@@ -63,7 +63,7 @@ else {
   detailsTop.style.top = "initial";
 
   detailsBottom.style.position = "initial";
-  detailsBottom.style.top = "initial";
+  detailsBottom.style.bottom = "initial";
 }
 
 if (currentTheme === "light") {
