@@ -34,13 +34,14 @@ let timeTotalTd = document.getElementById("time-total");
 timeTotalTd.innerText = secondsToPrettyTime(timeTotal);
 
 let detailsTop = document.getElementById("details-top");
+let detailsBottom = document.getElementById("details-bottom");
 
 let maxPercent;
 
 if (timeTotal) {
   let progressBar = document.getElementById("inner-progress");
 
-  maxPercent = 0.6;
+  maxPercent = 0.4;
 
   // In case time-now is bigger than time-total to avoid overflows.
   if (timeNow >= timeTotal) {
@@ -53,15 +54,16 @@ if (timeTotal) {
   }
 }
 else {
-  let details = document.getElementById("details-bottom");
+  maxPercent = 0.6;
 
-  maxPercent = 0.85;
+  detailsBottom.classList.add("hide-progressbar");
 
-  details.style.visibility = "hidden";
-
-  // Reset details-top style to default, making it centered.
+  // Reset details-top and details-bottom style to default, making it centered.
   detailsTop.style.position = "initial";
   detailsTop.style.top = "initial";
+
+  detailsBottom.style.position = "initial";
+  detailsBottom.style.top = "initial";
 }
 
 if (currentTheme === "light") {

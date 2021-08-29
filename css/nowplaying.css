@@ -40,6 +40,7 @@ div#progress-total {
   width: calc(54vw - 12px);
   height: 2.5vw;
   border-radius: 1vw;
+  margin-top: 1vw;
 }
 
 span#trackname {
@@ -135,4 +136,8 @@ td#cover-td {
   right: 0;
   filter: grayscale(0.5) brightness(var(--filter-brightness));
   background-color: var(--bg-filter);
+}
+
+.hide-progressbar table, .hide-progressbar div#progress-total {
+  display: none;
 }
