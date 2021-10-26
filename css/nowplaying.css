@@ -123,8 +123,3 @@ td#cover-td {
   filter: grayscale(0.5) brightness(var(--filter-brightness));
   background-color: var(--bg-filter);
 }
-
-.hide-progressbar table,
-.hide-progressbar div#progress-total {
-  display: none;
-}

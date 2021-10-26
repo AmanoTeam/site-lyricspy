@@ -56,7 +56,8 @@ if (timeTotal) {
 else {
   maxPercent = 0.8;
 
-  detailsBottom.classList.add("hide-progressbar");
+  document.getElementById("progress-total").style.display = "none";
+  document.getElementById("timing-div").style.display = "none";
 
   // Reset details-top and details-bottom style to default, making it centered.
   detailsTop.style.position = "initial";
