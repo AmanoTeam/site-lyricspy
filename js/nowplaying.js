@@ -86,7 +86,7 @@ while (parseInt(topStyle.height, 10) + parseInt(artistStyle.height, 10) > (windo
 }
 
 if (blurredBg) {
-  Vibrant.from(cover).getPalette().then(function(palette) {
+  Vibrant.from(cover).getPalette().then((palette) => {
     let color;
 
     if (currentTheme === "light") {

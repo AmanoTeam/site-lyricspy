@@ -1,24 +1,19 @@
-var loc = window.location.href;
-var url = new URL(loc);
-var code = url.searchParams.get("code");
+let loc = window.location.href;
+let url = new URL(loc);
+let code = url.searchParams.get("code");
 
-var obj = document.getElementById("code");
-var objcopy = document.getElementById("codecopy");
+let codePre = document.getElementById("code");
 
 if (code === null) {
   window.location.href = "..";
 } else {
-  obj.innerText = "/spoti " + code;
-  objcopy.value = "/spoti " + code;
+  codePre.innerText = "/spoti " + code;
 }
 
-function copyToClipboard() {
-  objcopy.select();
-  objcopy.setSelectionRange(0, 9999);
+document.getElementById("copy-btn").addEventListener("click", () => {
+  navigator.clipboard.writeText(codePre.innerText);
 
-  document.execCommand("copy");
-  var copied = document.getElementById("copied");
+  let copied = document.getElementById("copied");
   copied.innerText = "Copied to clipboard!";
-  setTimeout(function(){ copied.innerText = ""; }, 2000);
-  document.getSelection().removeAllRanges();
-}
+  setTimeout(() => { copied.innerText = ""; }, 2000);
+});
