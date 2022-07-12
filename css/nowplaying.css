@@ -8,7 +8,6 @@
   --color-secondary: white;
   --color-progress: rgba(0, 0, 0, 0.3);
   --filter-brightness: 1.1;
-  --box-shadow: #bbb6;
 }
 
 .dark-mode {
@@ -16,7 +15,6 @@
   --color-secondary: black;
   --color-progress: rgba(255, 255, 255, 0.3);
   --filter-brightness: 0.3;
-  --box-shadow: #4446;
 }
 
 body {
@@ -30,7 +28,7 @@ body {
 img#coverart {
   width: 33vw;
   border-radius: 5%;
-  box-shadow: 0 0 3vw var(--box-shadow);
+  box-shadow: 0 0 5vw rgba(0, 0, 0, 0.2);
 }
 
 div#progress-total {
