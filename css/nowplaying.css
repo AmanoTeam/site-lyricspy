@@ -6,6 +6,7 @@
 .light-mode {
   --color-primary: black;
   --color-secondary: white;
+  --color-progress: rgba(0, 0, 0, 0.3);
   --filter-brightness: 1.1;
   --box-shadow: #bbb6;
 }
@@ -13,6 +14,7 @@
 .dark-mode {
   --color-primary: white;
   --color-secondary: black;
+  --color-progress: rgba(255, 255, 255, 0.3);
   --filter-brightness: 0.3;
   --box-shadow: #4446;
 }
@@ -32,14 +34,12 @@ img#coverart {
 }
 
 div#progress-total {
-  background-color: var(--color-secondary);
-  border-color: var(--color-primary);
-  border-style: solid;
-  border-width: 6px;
+  background-color: var(--color-progress);
   width: calc(54vw - 12px);
-  height: 2.5vw;
-  border-radius: 1vw;
+  height: 3.5vw;
+  border-radius: 3.5vw;
   margin-top: 1vw;
+  margin-bottom: 1vw;
 }
 
 span#trackname {
@@ -69,6 +69,7 @@ div#inner-progress {
   background-color: var(--color-primary);
   width: 0;
   height: inherit;
+  border-radius: inherit;
 }
 
 table {
