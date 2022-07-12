@@ -35,7 +35,7 @@ img#coverart {
 
 div#progress-total {
   background-color: var(--color-progress);
-  width: calc(54vw - 12px);
+  width: 54vw;
   height: 3.5vw;
   border-radius: 3.5vw;
   margin-top: 1vw;

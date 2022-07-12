@@ -50,7 +50,7 @@ if (timeTotal) {
   else {
     let percent = (timeNow * 100) / timeTotal;
 
-    progressBar.style.width = "calc(" + percent * 0.54 + "vw - 12px)";
+    progressBar.style.width = percent * 0.54 + "vw";
   }
 }
 else {
