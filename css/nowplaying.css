@@ -40,6 +40,7 @@ div#progress-total {
   border-radius: 3.5vw;
   margin-top: 1vw;
   margin-bottom: 1vw;
+  overflow: hidden;
 }
 
 span#trackname {
@@ -66,9 +67,12 @@ span#artistname {
 }
 
 div#inner-progress {
+  position: relative;
   background-color: var(--color-primary);
   width: 0;
   height: inherit;
+  padding-left: 3.5vw;
+  right: 3.5vw;
   border-radius: inherit;
 }
 

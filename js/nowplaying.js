@@ -43,15 +43,9 @@ if (timeTotal) {
 
   maxPercent = 0.6;
 
-  // In case time-now is bigger than time-total to avoid overflows.
-  if (timeNow >= timeTotal) {
-    progressBar.style.width = "inherit";
-  }
-  else {
-    let percent = (timeNow * 100) / timeTotal;
+  let percent = (timeNow * 100) / timeTotal;
 
-    progressBar.style.width = percent * 0.54 + "vw";
-  }
+  progressBar.style.width = percent * 0.54 + "vw";
 }
 else {
   maxPercent = 0.8;
