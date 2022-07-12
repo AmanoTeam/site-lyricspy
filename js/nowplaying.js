@@ -17,8 +17,7 @@ let coverDiv = document.getElementById("coverart");
 coverDiv.src = cover;
 
 if (blurredBg) {
-  let coverDivBg = document.getElementById("bg-image");
-  coverDivBg.style.backgroundImage = "url('" + cover + "')";
+  document.body.style.backgroundImage = "url('" + cover + "')";
 }
 
 let trackDiv = document.getElementById("trackname");
