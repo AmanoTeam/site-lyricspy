@@ -97,6 +97,6 @@ if (blurredBg) {
     }
 
     document.documentElement.style
-      .setProperty("--bg-filter", "rgb(" + color.join(",") + ",0.5)");
+      .setProperty("--bg-filter", "rgba(" + color.join(",") + ",0.5)");
   });
 }
