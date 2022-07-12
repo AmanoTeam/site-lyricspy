@@ -11,9 +11,9 @@ if (code === null) {
 }
 
 document.getElementById("copy-btn").addEventListener("click", () => {
-  navigator.clipboard.writeText(codePre.innerText);
-
-  let copied = document.getElementById("copied");
-  copied.innerText = "Copied to clipboard!";
-  setTimeout(() => { copied.innerText = ""; }, 2000);
+  navigator.clipboard.writeText(codePre.innerText).then(() => {
+    let copied = document.getElementById("copied");
+    copied.innerText = "Copied to clipboard!";
+    setTimeout(() => { copied.innerText = ""; }, 2000);
+  });
 });
