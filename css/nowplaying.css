@@ -1,24 +1,13 @@
-@font-face {
-  font-family: 'Oblik Bold';
-  src: url("../fonts/Oblik_Bold.otf") format("opentype");
-}
-
 .light-mode {
-  --color-primary: black;
-  --color-secondary: white;
-  --color-progress: rgba(0, 0, 0, 0.3);
   --filter-brightness: 1.1;
 }
 
 .dark-mode {
-  --color-primary: white;
-  --color-secondary: black;
-  --color-progress: rgba(255, 255, 255, 0.3);
   --filter-brightness: 0.3;
 }
 
 body {
-  font-family: 'Oblik Bold', sans-serif;
+  font-family: 'Google Sans', sans-serif;
   margin: 0;
   overflow: hidden;
   color: var(--color-primary);
@@ -106,6 +95,7 @@ td#cover-td {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: var(--color-secondary);
   filter: blur(7vw);
   position: absolute;
   height: 100vh;
