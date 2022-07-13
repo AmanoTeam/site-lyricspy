@@ -1,6 +1,6 @@
 .light-mode {
   --color-secondary: white;
-  --filter-brightness: 1;
+  --filter-brightness: 1.1;
 }
 
 .dark-mode {
