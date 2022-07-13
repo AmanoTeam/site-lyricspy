@@ -98,7 +98,7 @@ td#cover-td {
   background-repeat: no-repeat;
   background-size: cover;
   background-color: var(--color-secondary);
-  filter: blur(7vw) brightness(var(--filter-brightness)) grayscale(0.3);
+  filter: blur(7vw) brightness(var(--filter-brightness));
   position: absolute;
   height: 100vh;
   width: 100vw;
@@ -113,5 +113,6 @@ td#cover-td {
   position: absolute;
   width: 100%;
   height: 100%;
+  filter: grayscale(0.3);
   background-color: var(--bg-filter);
 }
