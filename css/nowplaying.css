@@ -1,9 +1,11 @@
 .light-mode {
-  --filter-brightness: 1.1;
+  --color-secondary: white;
+  --filter-brightness: 1;
 }
 
 .dark-mode {
-  --filter-brightness: 0.3;
+  --color-secondary: black;
+  --filter-brightness: 0.5;
 }
 
 body {
@@ -96,7 +98,7 @@ td#cover-td {
   background-repeat: no-repeat;
   background-size: cover;
   background-color: var(--color-secondary);
-  filter: blur(7vw);
+  filter: blur(7vw) brightness(var(--filter-brightness)) grayscale(0.3);
   position: absolute;
   height: 100vh;
   width: 100vw;
@@ -109,10 +111,7 @@ td#cover-td {
   content: "";
   display: block;
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  filter: grayscale(0.5) brightness(var(--filter-brightness));
+  width: 100%;
+  height: 100%;
   background-color: var(--bg-filter);
 }

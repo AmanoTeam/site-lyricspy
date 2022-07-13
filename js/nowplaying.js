@@ -126,6 +126,4 @@ Vibrant.from(cover).getPalette().then((palette) => {
     .setProperty("--color-primary", mixColors(baseColorPrimary, color, 0.2));
   document.documentElement.style
     .setProperty("--color-progress", mixColors(baseColorPrimary, color, 0.2) + "4d");
-  document.documentElement.style
-    .setProperty("--color-secondary", mixColors(baseColorSecondary, color, 0.2));
 });
