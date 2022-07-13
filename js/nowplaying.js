@@ -121,7 +121,7 @@ Vibrant.from(cover).getPalette().then((palette) => {
   }
 
   document.documentElement.style
-    .setProperty("--bg-filter", color + "80");
+    .setProperty("--bg-filter", color + "60");
   document.documentElement.style
     .setProperty("--color-primary", mixColors(baseColorPrimary, color, 0.2));
   document.documentElement.style
