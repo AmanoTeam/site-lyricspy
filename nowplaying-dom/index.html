@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>DOM Image</title>
-  <link rel="stylesheet" href="../css/nowplaying.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@700" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/nowplaying.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@700" rel="stylesheet" />
 </head>
+
 <body>
   <div id="main">
     <table>
       <tr>
         <td id="cover-td">
-          <img id="coverart"/>
+          <img id="coverart" />
         </td>
         <td id="details-td">
           <div id="details-top">
             <span id="trackname"></span>
           </div>
-          <div id="details-bottom">
+          <div id="details-middle">
             <span id="artistname"></span>
-            <div id="progress-total"><div id="inner-progress"></div></div>
+          </div>
+          <div id="details-bottom">
+            <div id="progress-total">
+              <div id="inner-progress"></div>
+            </div>
             <div id="timing-div">
               <span id="time-now"></span>
               <span id="time-total"></span>
+            </div>
+            <div id="lastfm">
+              <span id="scrobbles-count"></span> <span id="scrobbles-text">scrobbles</span>
             </div>
           </div>
         </td>
@@ -33,4 +42,5 @@
   <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.2.1-alpha.1/dist/vibrant.min.js"></script>
   <script src="../js/nowplaying.js"></script>
 </body>
+
 </html>

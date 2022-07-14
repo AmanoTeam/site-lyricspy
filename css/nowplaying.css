@@ -1,10 +1,8 @@
 .light-mode {
-  --color-secondary: white;
   --filter-brightness: 1.1;
 }
 
 .dark-mode {
-  --color-secondary: black;
   --filter-brightness: 0.5;
 }
 
@@ -33,6 +31,7 @@ div#progress-total {
 }
 
 span#trackname {
+  margin-bottom: 1vw;
   word-break: break-word;
   display: block;
   font-size: 15vw;
@@ -43,16 +42,24 @@ span#artistname {
   font-size: 6vw;
 }
 
-#details-top {
-  position: absolute;
-  top: calc((100vh - 30vw) / 2);
-  margin-right: 5vw;
+div#lastfm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 2vw;
 }
 
-#details-bottom {
-  position: absolute;
-  bottom: calc((100vh - 30vw) / 2);
-  margin-right: 5vw;
+span#scrobbles-count {
+  font-size: 5.5vw;
+  margin-right: 2vw;
+  background-color: var(--color-primary);
+  color: var(--color-vibrant);
+  padding: 0 2.5vw;
+  border-radius: 6vw;
+}
+
+span#scrobbles-text {
+  font-size: 5vw;
 }
 
 div#inner-progress {
@@ -70,7 +77,8 @@ table {
 }
 
 td#details-td {
-  padding-left: 4vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
   height: 33vw;
 }
 

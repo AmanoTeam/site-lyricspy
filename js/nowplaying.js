@@ -25,6 +25,7 @@ let currentTheme = params.get("theme");
 let blurredBg = parseInt(params.get("blurbg"), 10) || 0;
 let timeNow = parseInt(params.get("timenow"), 10) || 0;
 let timeTotal = parseInt(params.get("timetotal"), 10) || 0;
+let scrobbles = parseInt(params.get("scrobbles"), 10) || 0;
 
 let coverDiv = document.getElementById("coverart");
 coverDiv.src = cover;
@@ -51,18 +52,32 @@ let timeTotalTd = document.getElementById("time-total");
 timeTotalTd.innerText = secondsToPrettyTime(timeTotal);
 
 let detailsTop = document.getElementById("details-top");
-let detailsBottom = document.getElementById("details-bottom");
+let detailsBottom = document.getElementById("details-middle");
 
 let maxPercent;
 
 if (timeTotal) {
-  let progressBar = document.getElementById("inner-progress");
-
   maxPercent = 0.6;
+
+  document.getElementById("lastfm").style.display = "none";
+
+  let progressBar = document.getElementById("inner-progress");
 
   let percent = (timeNow * 100) / timeTotal;
 
   progressBar.style.width = percent * 0.54 + "vw";
+}
+else if (scrobbles) {
+  maxPercent = 0.6;
+
+  document.getElementById("progress-total").style.display = "none";
+  document.getElementById("timing-div").style.display = "none";
+
+  document.getElementById("scrobbles-count").innerText = scrobbles;
+
+  if (scrobbles === 1) {
+    document.getElementById("scrobbles-text").innerText = "scrobble";
+  }
 }
 else {
   maxPercent = 0.8;
@@ -70,12 +85,7 @@ else {
   document.getElementById("progress-total").style.display = "none";
   document.getElementById("timing-div").style.display = "none";
 
-  // Reset details-top and details-bottom style to default, making it centered.
-  detailsTop.style.position = "initial";
-  detailsTop.style.top = "initial";
-
-  detailsBottom.style.position = "initial";
-  detailsBottom.style.bottom = "initial";
+  document.getElementById("lastfm").style.display = "none";
 }
 
 if (currentTheme === "light") {
@@ -123,7 +133,11 @@ Vibrant.from(cover).getPalette().then((palette) => {
   document.documentElement.style
     .setProperty("--bg-filter", color + "60");
   document.documentElement.style
+    .setProperty("--color-vibrant", mixColors(color, baseColorSecondary, 0.5));
+  document.documentElement.style
     .setProperty("--color-primary", mixColors(baseColorPrimary, color, 0.2));
+  document.documentElement.style
+    .setProperty("--color-secondary", mixColors(baseColorSecondary, color, 0.2));
   document.documentElement.style
     .setProperty("--color-progress", mixColors(baseColorPrimary, color, 0.2) + "4d");
 });
