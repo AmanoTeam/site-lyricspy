@@ -1,9 +1,13 @@
 .light-mode {
   --filter-brightness: 1.1;
+  --base-color-secondary: #fff;
+  --mix-blend-mode: darken;
 }
 
 .dark-mode {
   --filter-brightness: 0.5;
+  --base-color-secondary: #000;
+  --mix-blend-mode: lighten;
 }
 
 body {
@@ -53,7 +57,8 @@ span#scrobbles-count {
   font-size: 5.5vw;
   margin-right: 2vw;
   background-color: var(--color-primary);
-  color: var(--color-vibrant);
+  color: var(--base-color-secondary);
+  mix-blend-mode: var(--mix-blend-mode);
   padding: 0 2.5vw;
   border-radius: 6vw;
 }

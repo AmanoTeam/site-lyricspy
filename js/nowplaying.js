@@ -133,8 +133,6 @@ Vibrant.from(cover).getPalette().then((palette) => {
   document.documentElement.style
     .setProperty("--bg-filter", color + "60");
   document.documentElement.style
-    .setProperty("--color-vibrant", mixColors(color, baseColorSecondary, 0.5));
-  document.documentElement.style
     .setProperty("--color-primary", mixColors(baseColorPrimary, color, 0.2));
   document.documentElement.style
     .setProperty("--color-secondary", mixColors(baseColorSecondary, color, 0.2));
