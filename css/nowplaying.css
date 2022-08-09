@@ -24,16 +24,6 @@ img#coverart {
   box-shadow: 0 0 5vw rgba(0, 0, 0, 0.2);
 }
 
-div#progress-total {
-  background-color: var(--color-progress);
-  width: 54vw;
-  height: 3.5vw;
-  border-radius: 3.5vw;
-  margin-top: 1vw;
-  margin-bottom: 1vw;
-  overflow: hidden;
-}
-
 span#trackname {
   margin-bottom: 1vw;
   word-break: break-word;
@@ -67,10 +57,19 @@ span#scrobbles-text {
   font-size: 5vw;
 }
 
-div#inner-progress {
+div#progress-total {
+  background-color: var(--color-progress);
+  width: 54vw;
+  height: 3.5vw;
+  border-radius: 3.5vw;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  overflow: hidden;
+}
+
+div#progress-current {
   position: relative;
   background-color: var(--color-primary);
-  width: 0;
   height: inherit;
   padding-left: 3.5vw;
   right: 3.5vw;
@@ -87,7 +86,7 @@ td#details-td {
   height: 33vw;
 }
 
-#time-now {
+#time-current {
   margin-right: auto;
   padding-left: 6px;
 }
@@ -96,7 +95,7 @@ td#details-td {
   padding-right: 6px;
 }
 
-#timing-div {
+#time-div {
   display: flex;
   font-size: 3vw;
 }

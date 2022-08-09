@@ -23,7 +23,7 @@ let track = params.get("track");
 let artist = params.get("artist");
 let currentTheme = params.get("theme");
 let blurredBg = parseInt(params.get("blurbg"), 10) || 0;
-let timeNow = parseInt(params.get("timenow"), 10) || 0;
+let timeCurrent = parseInt(params.get("timenow"), 10) || 0;
 let timeTotal = parseInt(params.get("timetotal"), 10) || 0;
 let scrobbles = parseInt(params.get("scrobbles"), 10) || 0;
 
@@ -36,7 +36,7 @@ if (blurredBg) {
 }
 else {
   let coverDivBg = document.getElementById("bg-image");
-  coverDivBg.style.filter = "blur(0px)";
+  coverDivBg.style.filter = "initial";
 }
 
 let trackDiv = document.getElementById("trackname");
@@ -45,8 +45,8 @@ trackDiv.innerText = track;
 let artistDiv = document.getElementById("artistname");
 artistDiv.innerText = artist;
 
-let timeNowTd = document.getElementById("time-now");
-timeNowTd.innerText = secondsToPrettyTime(timeNow);
+let timeCurrentTd = document.getElementById("time-current");
+timeCurrentTd.innerText = secondsToPrettyTime(timeCurrent);
 
 let timeTotalTd = document.getElementById("time-total");
 timeTotalTd.innerText = secondsToPrettyTime(timeTotal);
@@ -61,17 +61,16 @@ if (timeTotal) {
 
   document.getElementById("lastfm").style.display = "none";
 
-  let progressBar = document.getElementById("inner-progress");
+  let currentProgress = document.getElementById("progress-current");
 
-  let percent = (timeNow * 100) / timeTotal;
+  let percent = (timeCurrent * 100) / timeTotal;
 
-  progressBar.style.width = percent * 0.54 + "vw";
+  currentProgress.style.width = percent * 0.54 + "vw";
 }
 else if (scrobbles) {
   maxPercent = 0.6;
 
-  document.getElementById("progress-total").style.display = "none";
-  document.getElementById("timing-div").style.display = "none";
+  document.getElementById("progress").style.display = "none";
 
   document.getElementById("scrobbles-count").innerText = scrobbles;
 
@@ -82,9 +81,7 @@ else if (scrobbles) {
 else {
   maxPercent = 0.8;
 
-  document.getElementById("progress-total").style.display = "none";
-  document.getElementById("timing-div").style.display = "none";
-
+  document.getElementById("progress").style.display = "none";
   document.getElementById("lastfm").style.display = "none";
 }
 
