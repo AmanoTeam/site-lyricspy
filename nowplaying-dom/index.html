@@ -8,36 +8,32 @@
 </head>
 
 <body>
-  <div id="main">
-    <table>
-      <tr>
-        <td id="cover-td">
-          <img id="coverart" />
-        </td>
-        <td id="details-td">
-          <div id="details-top">
-            <span id="trackname"></span>
+  <div id="main" class="main-content">
+    <div id="cover-div">
+      <img id="coverart" />
+    </div>
+    <div id="details-div">
+      <div id="details-top">
+        <span id="trackname"></span>
+      </div>
+      <div id="details-middle">
+        <span id="artistname"></span>
+      </div>
+      <div id="details-bottom">
+        <div id="progress">
+          <div id="progress-total">
+            <div id="progress-current"></div>
           </div>
-          <div id="details-middle">
-            <span id="artistname"></span>
+          <div id="time-div">
+            <span id="time-current"></span>
+            <span id="time-total"></span>
           </div>
-          <div id="details-bottom">
-            <div id="progress">
-              <div id="progress-total">
-                <div id="progress-current"></div>
-              </div>
-              <div id="time-div">
-                <span id="time-current"></span>
-                <span id="time-total"></span>
-              </div>
-            </div>
-            <div id="lastfm">
-              <span id="scrobbles-count"></span> <span id="scrobbles-text">scrobbles</span>
-            </div>
-          </div>
-        </td>
-      </tr>
-    </table>
+        </div>
+        <div id="lastfm">
+          <span id="scrobbles-count"></span> <span id="scrobbles-text">scrobbles</span>
+        </div>
+      </div>
+    </div>
   </div>
   <div id="bg-image"></div>
 

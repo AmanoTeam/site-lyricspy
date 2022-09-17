@@ -14,6 +14,7 @@ body {
   font-family: 'Google Sans', sans-serif;
   margin: 0;
   overflow: hidden;
+  height: 100vh;
   color: var(--color-primary);
   background-color: var(--color-secondary);
 }
@@ -76,14 +77,12 @@ div#progress-current {
   border-radius: inherit;
 }
 
-table {
-  border-collapse: collapse;
-}
-
-td#details-td {
-  padding-left: 5vw;
-  padding-right: 5vw;
-  height: 33vw;
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 5vw;
 }
 
 #time-current {
@@ -98,11 +97,6 @@ td#details-td {
 #time-div {
   display: flex;
   font-size: 3vw;
-}
-
-td#cover-td {
-  height: 100vh;
-  padding-left: 4vw;
 }
 
 #bg-image {
