@@ -1,0 +1,69 @@
+---
+import "@fontsource/fira-mono/400.css";
+
+import MainLayout from "../layouts/MainLayout.astro";
+import { Picture } from "astro:assets";
+
+import LogoWhite from "../img/logo-white.png";
+---
+
+<script>
+  let loc = window.location.href;
+  let url = new URL(loc);
+  let code = url.searchParams.get("code");
+
+  let codePre = document.getElementById("code");
+
+  if (code === null) {
+    window.location.href = "..";
+  } else {
+    codePre.innerText = "/spoti " + code;
+  }
+
+  document.getElementById("copy-btn").addEventListener("click", () => {
+    navigator.clipboard.writeText(codePre.innerText).then(() => {
+      let copied = document.getElementById("copied");
+      copied.innerText = "Copied to clipboard!";
+      setTimeout(() => {
+        copied.innerText = "";
+      }, 2000);
+    });
+  });
+</script>
+
+<MainLayout>
+  <div
+    id="main"
+    class="flex h-screen max-w-4xl flex-col justify-center mx-auto p-4"
+  >
+    <Picture
+      src={LogoWhite}
+      formats={["avif", "webp"]}
+      height="150"
+      alt="LyricsPy Logo"
+      class="mx-auto mb-16"
+    />
+
+    <h2 class="mx-auto text-2xl p-5 font-semibold">
+      Copy the code below and send it to your previous chat:
+    </h2>
+    <pre
+      id="code"
+      class="p-2 w-full rounded-lg bg-neutral-900 whitespace-pre-wrap break-words mx-auto">
+    </pre>
+    <br />
+    <div class="inline-block mt-5">
+      <a
+        class="cursor-pointer self-start bg-neutral-600 rounded-lg py-2 px-4 hover:bg-neutral-500 active:bg-neutral-700"
+        id="copy-btn">Copy</a
+      >
+      <span id="copied"></span>
+    </div>
+  </div>
+</MainLayout>
+
+<style>
+  pre {
+    font-family: "Fira Mono", monospace;
+  }
+</style>

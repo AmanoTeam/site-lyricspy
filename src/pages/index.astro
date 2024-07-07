@@ -1,0 +1,40 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { Picture } from "astro:assets";
+
+import LogoWhite from "../img/logo-white.png";
+---
+
+<MainLayout>
+  <div id="main" class="flex h-screen flex-col justify-center p-4">
+    <Picture
+      src={LogoWhite}
+      formats={["avif", "webp"]}
+      height="150"
+      alt="LyricsPy Logo"
+      class="mx-auto mb-16"
+    />
+
+    <h2 class="mx-auto text-2xl p-5 font-semibold">
+      Telegram bot and Python library for searching music lyrics.
+    </h2>
+    <p class="mx-auto text-lg">
+      <a
+        target="_blank"
+        href="https://t.me/LyricsPyBot"
+        class="mx-2 text-gray-500 no-underline hover:text-gray-400">Telegram</a
+      >&#8226;
+      <a
+        target="_blank"
+        href="https://pypi.org/project/LyricsPy/"
+        class="mx-2 text-gray-500 no-underline hover:text-gray-400">PyPI</a
+      >&#8226;
+      <a
+        target="_blank"
+        href="https://github.com/AmanoTeam/LyricsPy"
+        class="mx-2 text-gray-500 no-underline hover:text-gray-400"
+        >Source Code</a
+      >
+    </p>
+  </div>
+</MainLayout>
