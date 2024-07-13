@@ -8,11 +8,11 @@ import LogoWhite from "../img/logo-white.png";
 ---
 
 <script>
-  let loc = window.location.href;
-  let url = new URL(loc);
-  let code = url.searchParams.get("code");
+  const loc = window.location.href;
+  const url = new URL(loc);
+  const code = url.searchParams.get("code");
 
-  let codePre = document.getElementById("code");
+  const codePre = document.querySelector("pre#code") as HTMLPreElement;
 
   if (code === null) {
     window.location.href = "..";
@@ -20,12 +20,15 @@ import LogoWhite from "../img/logo-white.png";
     codePre.innerText = "/spoti " + code;
   }
 
-  document.getElementById("copy-btn").addEventListener("click", () => {
+  const copyBtn = document.querySelector("a#copy-btn") as HTMLAnchorElement;
+
+  const copiedSpan = document.querySelector("span#copied") as HTMLSpanElement;
+
+  copyBtn.addEventListener("click", () => {
     navigator.clipboard.writeText(codePre.innerText).then(() => {
-      let copied = document.getElementById("copied");
-      copied.innerText = "Copied to clipboard!";
+      copiedSpan.innerText = "Copied to clipboard!";
       setTimeout(() => {
-        copied.innerText = "";
+        copiedSpan.innerText = "";
       }, 2000);
     });
   });
