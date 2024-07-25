@@ -8,7 +8,8 @@ import LogoWhite from "../img/logo-white.png";
 ---
 
 <script>
-  import { request } from "@telegram-apps/sdk";
+  import { postEvent } from "@telegram-apps/sdk";
+
   const loc = window.location.href;
   const url = new URL(loc);
   const code = url.searchParams.get("code");
@@ -19,12 +20,9 @@ import LogoWhite from "../img/logo-white.png";
     window.location.href = "..";
   } else {
     codePre.innerText = "/spoti " + code;
-    const viewport = await request({
-      method: 'web_app_data_send',
-      event: ['code_sended'],
-      params: {
-        data: code
-      }
+
+    postEvent("web_app_data_send", {
+      data: code,
     });
   }
 
