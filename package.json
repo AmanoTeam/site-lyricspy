@@ -18,6 +18,7 @@
     "@biomejs/biome": "^1.8.3",
     "@fontsource-variable/fira-code": "^5.0.18",
     "@fontsource-variable/inter": "^5.0.19",
+    "@telegram-apps/sdk": "^1.1.3",
     "astro": "^4.12.2",
     "extract-colors": "^4.0.6",
     "tailwindcss": "^3.4.6",
