@@ -14,30 +14,34 @@ import LogoWhite from "../img/logo-white.png";
   const url = new URL(loc);
   const code = url.searchParams.get("code");
 
-  const codePre = document.querySelector("pre#code") as HTMLPreElement;
+  function initCode() {
+    if (code === null) {
+      window.location.href = "..";
+      return;
+    }
 
-  if (code === null) {
-    window.location.href = "..";
-  } else {
-    const [miniApp] = initMiniApp();
+    const codePre = document.querySelector("pre#code") as HTMLPreElement;
 
     codePre.innerText = "/spoti " + code;
 
+    const copyBtn = document.querySelector("a#copy-btn") as HTMLAnchorElement;
+
+    const copiedSpan = document.querySelector("span#copied") as HTMLSpanElement;
+
+    copyBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText(codePre.innerText).then(() => {
+        copiedSpan.innerText = "Copied to clipboard!";
+        setTimeout(() => {
+          copiedSpan.innerText = "";
+        }, 2000);
+      });
+    });
+
+    const [miniApp] = initMiniApp();
     miniApp.sendData(code);
   }
 
-  const copyBtn = document.querySelector("a#copy-btn") as HTMLAnchorElement;
-
-  const copiedSpan = document.querySelector("span#copied") as HTMLSpanElement;
-
-  copyBtn.addEventListener("click", () => {
-    navigator.clipboard.writeText(codePre.innerText).then(() => {
-      copiedSpan.innerText = "Copied to clipboard!";
-      setTimeout(() => {
-        copiedSpan.innerText = "";
-      }, 2000);
-    });
-  });
+  window.addEventListener("DOMContentLoaded", initCode);
 </script>
 
 <MainLayout>
