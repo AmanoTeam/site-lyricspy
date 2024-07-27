@@ -22,19 +22,23 @@ import LogoWhite from "../img/logo-white.png";
 
     const codePre = document.querySelector("pre#code") as HTMLPreElement;
 
-    codePre.innerText = "/spoti " + code;
+    codePre.textContent = "/spoti " + code;
 
     const copyBtn = document.querySelector("a#copy-btn") as HTMLAnchorElement;
 
     const copiedSpan = document.querySelector("span#copied") as HTMLSpanElement;
 
-    copyBtn.addEventListener("click", () => {
-      navigator.clipboard.writeText(codePre.innerText).then(() => {
-        copiedSpan.innerText = "Copied to clipboard!";
-        setTimeout(() => {
-          copiedSpan.innerText = "";
-        }, 2000);
-      });
+    copyBtn.addEventListener("click", async () => {
+      if (!codePre.textContent) {
+        return;
+      }
+
+      await navigator.clipboard.writeText(codePre.textContent);
+
+      copiedSpan.textContent = "Copied to clipboard!";
+      setTimeout(() => {
+        copiedSpan.textContent = "";
+      }, 2000);
     });
 
     const [miniApp] = initMiniApp();
