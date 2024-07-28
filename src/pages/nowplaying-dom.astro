@@ -81,7 +81,7 @@ import "@fontsource-variable/inter";
 
     const percent = Math.min((timeCurrent * 100) / timeTotal, 100);
 
-    currentProgress.style.width = `${percent}%`;
+    currentProgress.style.width = `${percent + 10}%`;
   } else if (scrobbles) {
     maxPercent = 0.6;
 
@@ -165,11 +165,11 @@ import "@fontsource-variable/inter";
           <span id="artistname" class="block text-[6vw]"></span>
           <div id="progress">
             <div
-              class="bg-[var(--bg-progress)] w-full h-[3.5vw] rounded-full my-[1vw]"
+              class="bg-[var(--bg-progress)] w-full h-[3.5vw] rounded-full my-[1vw] overflow-clip"
             >
               <div
                 id="progress-current"
-                class="relative bg-[var(--color-primary)] h-full rounded-full"
+                class="relative bg-[var(--color-primary)] h-full left-[-10%] rounded-full"
               >
               </div>
             </div>
