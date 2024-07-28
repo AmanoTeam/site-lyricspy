@@ -12,19 +12,6 @@ import "@fontsource-variable/inter";
       .replace(/^00:/, "");
   }
 
-  function mixColors(color1: string, color2: string, ratio: number) {
-    const r1 = parseInt(color1.substring(1, 3), 16);
-    const g1 = parseInt(color1.substring(3, 5), 16);
-    const b1 = parseInt(color1.substring(5, 7), 16);
-    const r2 = parseInt(color2.substring(1, 3), 16);
-    const g2 = parseInt(color2.substring(3, 5), 16);
-    const b2 = parseInt(color2.substring(5, 7), 16);
-    const r = Math.round((r2 - r1) * ratio + r1);
-    const g = Math.round((g2 - g1) * ratio + g1);
-    const b = Math.round((b2 - b1) * ratio + b1);
-    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-  }
-
   const loc = window.location.href;
   const params = new URL(loc).searchParams;
 
@@ -151,32 +138,9 @@ import "@fontsource-variable/inter";
   coverDiv.addEventListener("load", async () => {
     const palette = await extractColors(coverDiv, { crossOrigin: "anonymous" });
 
-    let baseColorPrimary;
-    let baseColorSecondary;
+    const color = `rgb(${palette[0].red} ${palette[0].green} ${palette[0].blue})`;
 
-    const color = palette[0].hex;
-
-    if (currentTheme === "light") {
-      baseColorPrimary = "#000000";
-      baseColorSecondary = "#ffffff";
-    } else {
-      baseColorPrimary = "#ffffff";
-      baseColorSecondary = "#000000";
-    }
-
-    document.documentElement.style.setProperty("--bg-filter", `${color}60`);
-    document.documentElement.style.setProperty(
-      "--color-primary",
-      mixColors(baseColorPrimary, color, 0.2),
-    );
-    document.documentElement.style.setProperty(
-      "--color-secondary",
-      mixColors(baseColorSecondary, color, 0.2),
-    );
-    document.documentElement.style.setProperty(
-      "--color-progress",
-      mixColors(baseColorPrimary, color, 0.2) + "4d",
-    );
+    document.documentElement.style.setProperty("--base-color", color);
   });
 </script>
 
@@ -207,11 +171,11 @@ import "@fontsource-variable/inter";
           <div id="progress">
             <div
               id="progress-total"
-              class="bg-[var(--color-progress)] w-full h-[3.5vw] rounded-[3.5vw] my-[1vw] overflow-hidden"
+              class="bg-[var(--bg-progress)] w-full h-[3.5vw] rounded-[3.5vw] my-[1vw] overflow-hidden"
             >
               <div
                 id="progress-current"
-                class="relative bg-[var(--color-primary)] h-full pl-[3.5vw] rounded-[inherit]"
+                class="relative bg-[var(--color-primary)] h-full rounded-[inherit]"
               >
               </div>
             </div>
@@ -243,23 +207,46 @@ import "@fontsource-variable/inter";
 </html>
 
 <style>
+  :root {
+    --base-color: rgb(128 128 128); /* fallback color for when js is unable to fetch a color */
+    --color-transparent: rgb(0 0 0 / 0);
+  }
+
   .light-mode {
     --filter-brightness: 1.5;
-    --base-color-primary: #fff;
-    --base-color-secondary: #fff;
+    --base-color-primary: rgb(0 0 0);
+    --base-color-secondary: rgb(255 255 255);
     --mix-blend-mode: darken;
   }
 
   .dark-mode {
     --filter-brightness: 0.5;
-    --base-color-primary: #fff;
-    --base-color-secondary: #000;
+    --base-color-primary: rgb(255 255 255);
+    --base-color-secondary: rgb(0 0 0);
     --mix-blend-mode: lighten;
   }
 
-  :root {
-    --color-primary: var(--color-primary);
-    --color-secondary: var(--color-secondary);
-    --color-progress: var(--color-progress);
+  body {
+    --color-primary: color-mix(
+      in srgb,
+      var(--base-color) 20%,
+      var(--base-color-primary)
+    );
+    --color-secondary: color-mix(
+      in srgb,
+      var(--base-color) 15%,
+      var(--base-color-secondary)
+    );
+
+    --bg-filter: color-mix(
+      in srgb,
+      var(--base-color) 40%,
+      var(--color-transparent)
+    );
+    --bg-progress: color-mix(
+      in srgb,
+      var(--color-primary) 30%,
+      var(--color-transparent)
+    );
   }
 </style>
