@@ -29,11 +29,13 @@ import "@fontsource-variable/inter";
     coverDiv.src = cover;
   }
 
+  const bgImage = document.querySelector("div#bg-image") as HTMLDivElement;
+
   if (blurredBg) {
-    document.body.style.backgroundImage = `url('${cover}')`;
+    bgImage.style.backgroundImage = `url('${cover}')`;
   } else {
-    document.body.style.backdropFilter = "initial";
-    document.body.style.backgroundColor = "var(--color-secondary)";
+    bgImage.style.filter = "initial";
+    bgImage.style.backgroundColor = "var(--color-secondary)";
   }
 
   const trackSpan = document.querySelector("span#trackname") as HTMLSpanElement;
@@ -149,8 +151,13 @@ import "@fontsource-variable/inter";
   </head>
 
   <body
-    class="font-bold text-[var(--color-primary)] bg-cover bg-center bg-no-repeat backdrop-blur-[7vw] backdrop-brightness-[var(--filter-brightness)]"
+    class="font-bold text-[var(--color-primary)] bg-[var(--base-color)] overflow-clip"
   >
+    <div
+      id="bg-image"
+      class="absolute h-screen w-screen bg-cover bg-center blur-[4vw] brightness-[var(--filter-brightness)] -z-10 scale-[1.28]"
+    >
+    </div>
     <div class="flex h-screen w-screen bg-[var(--bg-filter)]">
       <div class="m-auto flex flex-row gap-[5vw]">
         <img
