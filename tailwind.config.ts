@@ -6,7 +6,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["Inter Variable", "sans-serif"],
-        mono: ["Fira Code Variable", "monospace"]
+        mono: ["Fira Code Variable", "monospace"],
       },
     },
   },

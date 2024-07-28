@@ -131,8 +131,7 @@ import "@fontsource-variable/inter";
   let trackNameFont = 15; // 15vw
   let artistNameFont = 6; // 6vw
 
-  // Reducing font size until stuff gets in place.
-  // artist font size is always reduced less than track name font size.
+  // wait for fonts to load
   document.fonts.ready.then(function () {
     while (
       parseInt(topStyle.height, 10) + parseInt(artistStyle.height, 10) >
@@ -147,36 +146,36 @@ import "@fontsource-variable/inter";
     }
   });
 
-  coverDiv?.addEventListener("load", () =>
-    extractColors(coverDiv, { crossOrigin: "anonymous" }).then((palette) => {
-      let baseColorPrimary;
-      let baseColorSecondary;
+  coverDiv.addEventListener("load", async () => {
+    const palette = await extractColors(coverDiv, { crossOrigin: "anonymous" });
 
-      const color = palette[0].hex;
+    let baseColorPrimary;
+    let baseColorSecondary;
 
-      if (currentTheme === "light") {
-        baseColorPrimary = "#000000";
-        baseColorSecondary = "#ffffff";
-      } else {
-        baseColorPrimary = "#ffffff";
-        baseColorSecondary = "#000000";
-      }
+    const color = palette[0].hex;
 
-      document.documentElement.style.setProperty("--bg-filter", color + "60");
-      document.documentElement.style.setProperty(
-        "--color-primary",
-        mixColors(baseColorPrimary, color, 0.2),
-      );
-      document.documentElement.style.setProperty(
-        "--color-secondary",
-        mixColors(baseColorSecondary, color, 0.2),
-      );
-      document.documentElement.style.setProperty(
-        "--color-progress",
-        mixColors(baseColorPrimary, color, 0.2) + "4d",
-      );
-    }),
-  );
+    if (currentTheme === "light") {
+      baseColorPrimary = "#000000";
+      baseColorSecondary = "#ffffff";
+    } else {
+      baseColorPrimary = "#ffffff";
+      baseColorSecondary = "#000000";
+    }
+
+    document.documentElement.style.setProperty("--bg-filter", color + "60");
+    document.documentElement.style.setProperty(
+      "--color-primary",
+      mixColors(baseColorPrimary, color, 0.2),
+    );
+    document.documentElement.style.setProperty(
+      "--color-secondary",
+      mixColors(baseColorSecondary, color, 0.2),
+    );
+    document.documentElement.style.setProperty(
+      "--color-progress",
+      mixColors(baseColorPrimary, color, 0.2) + "4d",
+    );
+  });
 </script>
 
 <html lang="en">
