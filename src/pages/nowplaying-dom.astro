@@ -80,9 +80,9 @@ import "@fontsource-variable/inter";
       "div#progress-current",
     ) as HTMLDivElement;
 
-    const percent = (timeCurrent * 100) / timeTotal;
+    const percent = Math.min((timeCurrent * 100) / timeTotal, 100);
 
-    currentProgress.style.width = `${percent * 0.54}vw`;
+    currentProgress.style.width = `${percent}%`;
   } else if (scrobbles) {
     maxPercent = 0.6;
 
@@ -152,45 +152,38 @@ import "@fontsource-variable/inter";
   <body
     class="flex font-inter font-bold text-[var(--color-primary)] h-screen w-screen m-0"
   >
-    <div id="main" class="m-auto flex flex-row gap-[5vw]">
-      <div id="cover-div">
-        <img
-          id="coverart"
-          class="w-[33vw] rounded-[5%] shadow-2xl shadow-black/20"
-        />
-      </div>
-      <div id="details-div" class="w-[54vw] my-auto">
+    <div class="m-auto flex flex-row gap-[5vw]">
+      <img
+        id="coverart"
+        class="w-[33vw] rounded-[5%] shadow-2xl shadow-black/20"
+      />
+      <div class="w-[54vw] my-auto">
         <div id="details-top">
           <span id="trackname" class="block mb-[1vw] break-words text-[15vw]"
           ></span>
         </div>
-        <div id="details-middle">
-          <span id="artistname" class="block text-[6vw]"></span>
-        </div>
-        <div id="details-bottom">
-          <div id="progress">
+        <span id="artistname" class="block text-[6vw]"></span>
+        <div id="progress">
+          <div
+            class="bg-[var(--bg-progress)] w-full h-[3.5vw] rounded-full my-[1vw]"
+          >
             <div
-              id="progress-total"
-              class="bg-[var(--bg-progress)] w-full h-[3.5vw] rounded-[3.5vw] my-[1vw] overflow-hidden"
+              id="progress-current"
+              class="relative bg-[var(--color-primary)] h-full rounded-full"
             >
-              <div
-                id="progress-current"
-                class="relative bg-[var(--color-primary)] h-full rounded-[inherit]"
-              >
-              </div>
-            </div>
-            <div id="time-div" class="flex text-[3vw]">
-              <span id="time-current" class="mr-auto pl-1.5"></span>
-              <span id="time-total" class="pr-1.5"></span>
             </div>
           </div>
-          <div id="lastfm" class="flex flex-row items-center mt-2vw">
-            <span
-              id="scrobbles-count"
-              class="text-[5.5vw] mr-[2vw] bg-[var(--color-primary)] text-[var(--base-color-secondary)] mix-blend-[var(--mix-blend-mode)] px-[2.5vw] rounded-[6vw]"
-            ></span>
-            <span id="scrobbles-text" class="text-[5vw]">scrobbles</span>
+          <div class="flex text-[3vw]">
+            <span id="time-current" class="mr-auto pl-1.5"></span>
+            <span id="time-total" class="pr-1.5"></span>
           </div>
+        </div>
+        <div id="lastfm" class="flex flex-row items-center mt-2vw">
+          <span
+            id="scrobbles-count"
+            class="text-[5.5vw] mr-[2vw] bg-[var(--color-primary)] text-[var(--base-color-secondary)] auto-mix-blend px-[2.5vw] rounded-[6vw]"
+          ></span>
+          <span id="scrobbles-text" class="text-[5vw]">scrobbles</span>
         </div>
       </div>
     </div>
@@ -208,7 +201,9 @@ import "@fontsource-variable/inter";
 
 <style>
   :root {
-    --base-color: rgb(128 128 128); /* fallback color for when js is unable to fetch a color */
+    --base-color: rgb(
+      128 128 128
+    ); /* fallback color for when js is unable to fetch a color */
     --color-transparent: rgb(0 0 0 / 0);
   }
 
@@ -216,14 +211,14 @@ import "@fontsource-variable/inter";
     --filter-brightness: 1.5;
     --base-color-primary: rgb(0 0 0);
     --base-color-secondary: rgb(255 255 255);
-    --mix-blend-mode: darken;
+    --mix-blend-mode: multiply;
   }
 
   .dark-mode {
     --filter-brightness: 0.5;
     --base-color-primary: rgb(255 255 255);
     --base-color-secondary: rgb(0 0 0);
-    --mix-blend-mode: lighten;
+    --mix-blend-mode: screen;
   }
 
   body {
@@ -248,5 +243,9 @@ import "@fontsource-variable/inter";
       var(--color-primary) 30%,
       var(--color-transparent)
     );
+  }
+
+  .auto-mix-blend {
+    mix-blend-mode: var(--mix-blend-mode);
   }
 </style>
