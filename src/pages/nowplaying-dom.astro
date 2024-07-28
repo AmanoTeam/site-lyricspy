@@ -45,7 +45,7 @@ import "@fontsource-variable/inter";
   const coverDivBg = document.querySelector("div#bg-image") as HTMLDivElement;
 
   if (blurredBg) {
-    coverDivBg.style.backgroundImage = "url('" + cover + "')";
+    coverDivBg.style.backgroundImage = `url('${cover}')`;
   } else {
     coverDivBg.style.filter = "initial";
   }
@@ -62,15 +62,17 @@ import "@fontsource-variable/inter";
     artistSpan.innerText = artist;
   }
 
-  const timeCurrentSpan = document.querySelector(
-    "span#time-current",
-  ) as HTMLSpanElement;
-  timeCurrentSpan.innerText = secondsToPrettyTime(timeCurrent);
+  if (!scrobbles) {
+    const timeCurrentSpan = document.querySelector(
+      "span#time-current",
+    ) as HTMLSpanElement;
+    timeCurrentSpan.innerText = secondsToPrettyTime(timeCurrent);
 
-  const timeTotalSpan = document.querySelector(
-    "span#time-total",
-  ) as HTMLSpanElement;
-  timeTotalSpan.innerText = secondsToPrettyTime(timeTotal);
+    const timeTotalSpan = document.querySelector(
+      "span#time-total",
+    ) as HTMLSpanElement;
+    timeTotalSpan.innerText = secondsToPrettyTime(timeTotal);
+  }
 
   const detailsTop = document.querySelector(
     "div#details-top",
@@ -93,7 +95,7 @@ import "@fontsource-variable/inter";
 
     const percent = (timeCurrent * 100) / timeTotal;
 
-    currentProgress.style.width = percent * 0.54 + "vw";
+    currentProgress.style.width = `${percent * 0.54}vw`;
   } else if (scrobbles) {
     maxPercent = 0.6;
 
@@ -120,9 +122,9 @@ import "@fontsource-variable/inter";
   }
 
   if (currentTheme === "light") {
-    document.body.className = "light-mode";
+    document.body.classList.add("light-mode");
   } else {
-    document.body.className = "dark-mode";
+    document.body.classList.add("dark-mode");
   }
 
   const topStyle = document.defaultView!.getComputedStyle(detailsTop);
@@ -141,8 +143,8 @@ import "@fontsource-variable/inter";
       trackNameFont *= 0.995;
       artistNameFont *= 0.9985;
 
-      trackSpan.style.fontSize = trackNameFont + "vw";
-      artistSpan.style.fontSize = artistNameFont + "vw";
+      trackSpan.style.fontSize = `${trackNameFont}vw`;
+      artistSpan.style.fontSize = `${artistNameFont}vw`;
     }
   });
 
@@ -162,7 +164,7 @@ import "@fontsource-variable/inter";
       baseColorSecondary = "#000000";
     }
 
-    document.documentElement.style.setProperty("--bg-filter", color + "60");
+    document.documentElement.style.setProperty("--bg-filter", `${color}60`);
     document.documentElement.style.setProperty(
       "--color-primary",
       mixColors(baseColorPrimary, color, 0.2),
@@ -183,167 +185,81 @@ import "@fontsource-variable/inter";
     <title>DOM Image</title>
   </head>
 
-  <body>
-    <div id="main" class="main-content">
+  <body
+    class="flex font-inter font-bold text-[var(--color-primary)] h-screen w-screen m-0"
+  >
+    <div id="main" class="m-auto flex flex-row gap-[5vw]">
       <div id="cover-div">
-        <img id="coverart" />
+        <img
+          id="coverart"
+          class="w-[33vw] rounded-[5%] shadow-2xl shadow-black/20"
+        />
       </div>
-      <div id="details-div">
+      <div id="details-div" class="w-[54vw] my-auto">
         <div id="details-top">
-          <span id="trackname"></span>
+          <span id="trackname" class="block mb-[1vw] break-words text-[15vw]"
+          ></span>
         </div>
         <div id="details-middle">
-          <span id="artistname"></span>
+          <span id="artistname" class="block text-[6vw]"></span>
         </div>
         <div id="details-bottom">
           <div id="progress">
-            <div id="progress-total">
-              <div id="progress-current" class="box-content"></div>
+            <div
+              id="progress-total"
+              class="bg-[var(--color-progress)] w-full h-[3.5vw] rounded-[3.5vw] my-[1vw] overflow-hidden"
+            >
+              <div
+                id="progress-current"
+                class="relative bg-[var(--color-primary)] h-full pl-[3.5vw] rounded-[inherit]"
+              >
+              </div>
             </div>
-            <div id="time-div">
-              <span id="time-current"></span>
-              <span id="time-total"></span>
+            <div id="time-div" class="flex text-[3vw]">
+              <span id="time-current" class="mr-auto pl-1.5"></span>
+              <span id="time-total" class="pr-1.5"></span>
             </div>
           </div>
-          <div id="lastfm">
-            <span id="scrobbles-count"></span>
-            <span id="scrobbles-text">scrobbles</span>
+          <div id="lastfm" class="flex flex-row items-center mt-2vw">
+            <span
+              id="scrobbles-count"
+              class="text-[5.5vw] mr-[2vw] bg-[var(--color-primary)] text-[var(--base-color-secondary)] mix-blend-[var(--mix-blend-mode)] px-[2.5vw] rounded-[6vw]"
+            ></span>
+            <span id="scrobbles-text" class="text-[5vw]">scrobbles</span>
           </div>
         </div>
       </div>
     </div>
-    <div id="bg-image"></div>
+    <div
+      id="bg-image"
+      class="bg-cover bg-center bg-no-repeat bg-[var(--color-secondary)] filter blur-[7vw] brightness-[var(--filter-brightness)] absolute h-screen w-screen top-0 scale-[1.3] -z-10"
+    >
+      <div
+        class="bg-[var(--bg-filter)] w-full h-full absolute filter grayscale-[0.3]"
+      >
+      </div>
+    </div>
   </body>
 </html>
 
 <style>
   .light-mode {
     --filter-brightness: 1.5;
+    --base-color-primary: #fff;
     --base-color-secondary: #fff;
     --mix-blend-mode: darken;
   }
 
   .dark-mode {
     --filter-brightness: 0.5;
+    --base-color-primary: #fff;
     --base-color-secondary: #000;
     --mix-blend-mode: lighten;
   }
 
-  body {
-    font-family: "Inter Variable", sans-serif;
-    font-weight: 700;
-    margin: 0;
-    overflow: hidden;
-    height: 100vh;
-    color: var(--color-primary);
-    background-color: var(--color-secondary);
-  }
-
-  img#coverart {
-    width: 33vw;
-    border-radius: 5%;
-    box-shadow: 0 0 5vw rgba(0, 0, 0, 0.2);
-  }
-
-  div#details-div {
-    width: 54vw;
-  }
-
-  span#trackname {
-    margin-bottom: 1vw;
-    word-break: break-word;
-    display: block;
-    font-size: 15vw;
-  }
-
-  span#artistname {
-    display: block;
-    font-size: 6vw;
-  }
-
-  div#lastfm {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 2vw;
-  }
-
-  span#scrobbles-count {
-    font-size: 5.5vw;
-    margin-right: 2vw;
-    background-color: var(--color-primary);
-    color: var(--base-color-secondary);
-    mix-blend-mode: var(--mix-blend-mode);
-    padding: 0 2.5vw;
-    border-radius: 6vw;
-  }
-
-  span#scrobbles-text {
-    font-size: 5vw;
-  }
-
-  div#progress-total {
-    background-color: var(--color-progress);
-    width: inherit;
-    height: 3.5vw;
-    border-radius: 3.5vw;
-    margin-top: 1vw;
-    margin-bottom: 1vw;
-    overflow: hidden;
-  }
-
-  div#progress-current {
-    position: relative;
-    background-color: var(--color-primary);
-    height: inherit;
-    padding-left: 3.5vw;
-    right: 3.5vw;
-    border-radius: inherit;
-  }
-
-  .main-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    gap: 5vw;
-  }
-
-  #time-current {
-    margin-right: auto;
-    padding-left: 6px;
-  }
-
-  #time-total {
-    padding-right: 6px;
-  }
-
-  #time-div {
-    display: flex;
-    font-size: 3vw;
-  }
-
-  #bg-image {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: var(--color-secondary);
-    filter: blur(7vw) brightness(var(--filter-brightness));
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    top: 0;
-    transform: scale(1.3);
-    z-index: -100;
-  }
-
-  #bg-image::before {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    filter: grayscale(0.3);
-    background-color: var(--bg-filter);
+  :root {
+    --color-primary: var(--color-primary);
+    --color-secondary: var(--color-secondary);
+    --color-progress: var(--color-progress);
   }
 </style>
