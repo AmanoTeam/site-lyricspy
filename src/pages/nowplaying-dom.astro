@@ -29,12 +29,11 @@ import "@fontsource-variable/inter";
     coverDiv.src = cover;
   }
 
-  const coverDivBg = document.querySelector("div#bg-image") as HTMLDivElement;
-
   if (blurredBg) {
-    coverDivBg.style.backgroundImage = `url('${cover}')`;
+    document.body.style.backgroundImage = `url('${cover}')`;
   } else {
-    coverDivBg.style.filter = "initial";
+    document.body.style.backdropFilter = "initial";
+    document.body.style.backgroundColor = "var(--color-secondary)";
   }
 
   const trackSpan = document.querySelector("span#trackname") as HTMLSpanElement;
@@ -150,50 +149,43 @@ import "@fontsource-variable/inter";
   </head>
 
   <body
-    class="flex font-inter font-bold text-[var(--color-primary)] h-screen w-screen m-0"
+    class="font-bold text-[var(--color-primary)] bg-cover bg-center bg-no-repeat backdrop-blur-[7vw] backdrop-brightness-[var(--filter-brightness)]"
   >
-    <div class="m-auto flex flex-row gap-[5vw]">
-      <img
-        id="coverart"
-        class="w-[33vw] rounded-[5%] shadow-2xl shadow-black/20"
-      />
-      <div class="w-[54vw] my-auto">
-        <div id="details-top">
-          <span id="trackname" class="block mb-[1vw] break-words text-[15vw]"
-          ></span>
-        </div>
-        <span id="artistname" class="block text-[6vw]"></span>
-        <div id="progress">
-          <div
-            class="bg-[var(--bg-progress)] w-full h-[3.5vw] rounded-full my-[1vw]"
-          >
+    <div class="flex h-screen w-screen bg-[var(--bg-filter)]">
+      <div class="m-auto flex flex-row gap-[5vw]">
+        <img
+          id="coverart"
+          class="w-[33vw] rounded-[5%] shadow-2xl shadow-black/20"
+        />
+        <div class="w-[54vw] my-auto">
+          <div id="details-top">
+            <span id="trackname" class="block mb-[1vw] break-words text-[15vw]"
+            ></span>
+          </div>
+          <span id="artistname" class="block text-[6vw]"></span>
+          <div id="progress">
             <div
-              id="progress-current"
-              class="relative bg-[var(--color-primary)] h-full rounded-full"
+              class="bg-[var(--bg-progress)] w-full h-[3.5vw] rounded-full my-[1vw]"
             >
+              <div
+                id="progress-current"
+                class="relative bg-[var(--color-primary)] h-full rounded-full"
+              >
+              </div>
+            </div>
+            <div class="flex text-[3vw]">
+              <span id="time-current" class="mr-auto pl-1.5"></span>
+              <span id="time-total" class="pr-1.5"></span>
             </div>
           </div>
-          <div class="flex text-[3vw]">
-            <span id="time-current" class="mr-auto pl-1.5"></span>
-            <span id="time-total" class="pr-1.5"></span>
+          <div id="lastfm" class="flex flex-row items-center mt-2vw">
+            <span
+              id="scrobbles-count"
+              class="text-[5.5vw] mr-[2vw] bg-[var(--color-primary)] text-[var(--base-color-secondary)] auto-mix-blend px-[2.5vw] rounded-[6vw]"
+            ></span>
+            <span id="scrobbles-text" class="text-[5vw]">scrobbles</span>
           </div>
         </div>
-        <div id="lastfm" class="flex flex-row items-center mt-2vw">
-          <span
-            id="scrobbles-count"
-            class="text-[5.5vw] mr-[2vw] bg-[var(--color-primary)] text-[var(--base-color-secondary)] auto-mix-blend px-[2.5vw] rounded-[6vw]"
-          ></span>
-          <span id="scrobbles-text" class="text-[5vw]">scrobbles</span>
-        </div>
-      </div>
-    </div>
-    <div
-      id="bg-image"
-      class="bg-cover bg-center bg-no-repeat bg-[var(--color-secondary)] filter blur-[7vw] brightness-[var(--filter-brightness)] absolute h-screen w-screen top-0 scale-[1.3] -z-10"
-    >
-      <div
-        class="bg-[var(--bg-filter)] w-full h-full absolute filter grayscale-[0.3]"
-      >
       </div>
     </div>
   </body>
@@ -235,7 +227,7 @@ import "@fontsource-variable/inter";
 
     --bg-filter: color-mix(
       in srgb,
-      var(--base-color) 40%,
+      var(--color-secondary) 40%,
       var(--color-transparent)
     );
     --bg-progress: color-mix(
