@@ -138,43 +138,43 @@ import "@fontsource-variable/inter";
   </head>
 
   <body
-    class="font-bold text-[var(--color-primary)] bg-[var(--base-color)] overflow-clip"
+    class="overflow-clip bg-[var(--base-color)] font-bold text-[var(--color-primary)]"
   >
     <div
       id="bg-image"
-      class="absolute h-screen w-screen bg-cover bg-center blur-[4vw] brightness-[var(--filter-brightness)] -z-10 scale-[1.28]"
+      class="-z-10 absolute h-screen w-screen scale-[1.28] bg-center bg-cover blur-[4vw] brightness-[var(--filter-brightness)]"
     >
     </div>
     <div class="flex h-screen w-screen bg-[var(--bg-filter)]">
-      <div class="my-auto flex flex-row gap-[5vw] mx-[4vw] w-full">
+      <div class="mx-[4vw] my-auto flex w-full flex-row gap-[5vw]">
         <img
           id="coverart"
           class="h-[33vw] rounded-[5%] shadow-2xl shadow-black/20"
         />
-        <div id="side-details" class="flex flex-col py-[1vw] w-full">
-          <span id="trackname" class="mb-[1vw] break-words text-[15vw]"></span>
-          <span id="artistname" class="text-[6vw]"></span>
+        <div id="side-details" class="flex w-full flex-col py-[1vw]">
+          <span id="trackname" class="mb-[1vw] break-words text-[15vw]" />
+          <span id="artistname" class="text-[6vw]" />
           <div class="mt-auto">
             <div id="progress" class="mt-[2vw]">
               <div
-                class="bg-[var(--bg-progress)] w-full h-[3.5vw] rounded-full my-[1vw] overflow-clip mt-auto"
+                class="my-[1vw] mt-auto h-[3.5vw] w-full overflow-clip rounded-full bg-[var(--bg-progress)]"
               >
                 <div
                   id="progress-current"
-                  class="relative bg-[var(--color-primary)] h-full left-[-10%] rounded-full"
+                  class="relative left-[-10%] h-full rounded-full bg-[var(--color-primary)]"
                 >
                 </div>
               </div>
-              <div class="flex text-[3vw] px-1.5 justify-between">
-                <span id="time-current"></span>
-                <span id="time-total"></span>
+              <div class="flex justify-between px-1.5 text-[3vw]">
+                <span id="time-current" />
+                <span id="time-total" />
               </div>
             </div>
-            <div id="lastfm" class="flex flex-row items-center mt-[2vw]">
+            <div id="lastfm" class="mt-[2vw] flex flex-row items-center">
               <span
                 id="scrobbles-count"
-                class="text-[5.5vw] mr-[2vw] bg-[var(--color-primary)] text-[var(--base-color-secondary)] auto-mix-blend px-[2.5vw] rounded-[6vw]"
-              ></span>
+                class="auto-mix-blend mr-[2vw] rounded-[6vw] bg-[var(--color-primary)] px-[2.5vw] text-[5.5vw] text-[var(--base-color-secondary)]"
+              />
               <span id="scrobbles-text" class="text-[5vw]">scrobbles</span>
             </div>
           </div>
