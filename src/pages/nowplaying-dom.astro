@@ -38,6 +38,10 @@ import "@fontsource-variable/inter";
     bgImage.style.backgroundColor = "var(--color-secondary)";
   }
 
+  const sideDetails = document.querySelector(
+    "div#side-details",
+  ) as HTMLDivElement;
+
   const trackSpan = document.querySelector("span#trackname") as HTMLSpanElement;
   if (track) {
     trackSpan.innerText = track;
@@ -62,19 +66,11 @@ import "@fontsource-variable/inter";
     timeTotalSpan.innerText = secondsToPrettyTime(timeTotal);
   }
 
-  const detailsTop = document.querySelector(
-    "div#details-top",
-  ) as HTMLDivElement;
-
-  let maxPercent;
-
   const progressDiv = document.querySelector("div#progress") as HTMLDivElement;
 
   const lastFMDiv = document.querySelector("div#lastfm") as HTMLDivElement;
 
   if (timeTotal) {
-    maxPercent = 0.6;
-
     lastFMDiv.style.display = "none";
 
     const currentProgress = document.querySelector(
@@ -85,8 +81,6 @@ import "@fontsource-variable/inter";
 
     currentProgress.style.width = `${percent + 10}%`;
   } else if (scrobbles) {
-    maxPercent = 0.6;
-
     progressDiv.style.display = "none";
 
     const scrobblesCountSpan = document.querySelector(
@@ -103,8 +97,6 @@ import "@fontsource-variable/inter";
       scrobblesTextSpan.innerText = "scrobble";
     }
   } else {
-    maxPercent = 0.8;
-
     progressDiv.style.display = "none";
     lastFMDiv.style.display = "none";
   }
@@ -115,28 +107,23 @@ import "@fontsource-variable/inter";
     document.body.classList.add("dark-mode");
   }
 
-  const topStyle = document.defaultView!.getComputedStyle(detailsTop);
-  const artistStyle = document.defaultView!.getComputedStyle(artistSpan);
+  const sideDetailsStyle = document.defaultView!.getComputedStyle(sideDetails);
+  const coverArtStyle = document.defaultView!.getComputedStyle(coverDiv);
 
   let trackNameFont = 15; // 15vw
   let artistNameFont = 6; // 6vw
 
-  // wait for fonts to load
-  document.fonts.ready.then(function () {
+  coverDiv.addEventListener("load", async () => {
     while (
-      parseInt(topStyle.height, 10) + parseInt(artistStyle.height, 10) >
-      window.outerWidth * 0.33 * maxPercent
+      parseFloat(sideDetailsStyle.height) > parseFloat(coverArtStyle.height)
     ) {
-      // 60% or 80% of cover art size (33% of screen width)
       trackNameFont *= 0.995;
       artistNameFont *= 0.9985;
 
       trackSpan.style.fontSize = `${trackNameFont}vw`;
       artistSpan.style.fontSize = `${artistNameFont}vw`;
     }
-  });
 
-  coverDiv.addEventListener("load", async () => {
     const palette = await extractColors(coverDiv, { crossOrigin: "anonymous" });
 
     const color = `rgb(${palette[0].red} ${palette[0].green} ${palette[0].blue})`;
@@ -159,38 +146,37 @@ import "@fontsource-variable/inter";
     >
     </div>
     <div class="flex h-screen w-screen bg-[var(--bg-filter)]">
-      <div class="m-auto flex flex-row gap-[5vw]">
+      <div class="my-auto flex flex-row gap-[5vw] mx-[4vw] w-full">
         <img
           id="coverart"
-          class="w-[33vw] rounded-[5%] shadow-2xl shadow-black/20"
+          class="h-[33vw] rounded-[5%] shadow-2xl shadow-black/20"
         />
-        <div class="w-[54vw] my-auto">
-          <div id="details-top">
-            <span id="trackname" class="block mb-[1vw] break-words text-[15vw]"
-            ></span>
-          </div>
-          <span id="artistname" class="block text-[6vw]"></span>
-          <div id="progress">
-            <div
-              class="bg-[var(--bg-progress)] w-full h-[3.5vw] rounded-full my-[1vw] overflow-clip"
-            >
+        <div id="side-details" class="flex flex-col py-[1vw] w-full">
+          <span id="trackname" class="mb-[1vw] break-words text-[15vw]"></span>
+          <span id="artistname" class="text-[6vw]"></span>
+          <div class="mt-auto">
+            <div id="progress" class="mt-[2vw]">
               <div
-                id="progress-current"
-                class="relative bg-[var(--color-primary)] h-full left-[-10%] rounded-full"
+                class="bg-[var(--bg-progress)] w-full h-[3.5vw] rounded-full my-[1vw] overflow-clip mt-auto"
               >
+                <div
+                  id="progress-current"
+                  class="relative bg-[var(--color-primary)] h-full left-[-10%] rounded-full"
+                >
+                </div>
+              </div>
+              <div class="flex text-[3vw] px-1.5 justify-between">
+                <span id="time-current"></span>
+                <span id="time-total"></span>
               </div>
             </div>
-            <div class="flex text-[3vw]">
-              <span id="time-current" class="mr-auto pl-1.5"></span>
-              <span id="time-total" class="pr-1.5"></span>
+            <div id="lastfm" class="flex flex-row items-center mt-[2vw]">
+              <span
+                id="scrobbles-count"
+                class="text-[5.5vw] mr-[2vw] bg-[var(--color-primary)] text-[var(--base-color-secondary)] auto-mix-blend px-[2.5vw] rounded-[6vw]"
+              ></span>
+              <span id="scrobbles-text" class="text-[5vw]">scrobbles</span>
             </div>
-          </div>
-          <div id="lastfm" class="flex flex-row items-center mt-2vw">
-            <span
-              id="scrobbles-count"
-              class="text-[5.5vw] mr-[2vw] bg-[var(--color-primary)] text-[var(--base-color-secondary)] auto-mix-blend px-[2.5vw] rounded-[6vw]"
-            ></span>
-            <span id="scrobbles-text" class="text-[5vw]">scrobbles</span>
           </div>
         </div>
       </div>
